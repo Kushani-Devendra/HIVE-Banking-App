@@ -1,0 +1,266 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Kushani",
+      "lastName": "Sasiprabha",
+      "username": "k2000",
+      "password": "123"
+    },
+    {
+      "id": 2,
+      "firstName": "Sam",
+      "lastName": "Rogers",
+      "username": "s2000",
+      "password": "123"
+    }
+  ],
+  "accounts": [
+    {
+      "id": 1,
+      "accType": "Current",
+      "accDesc": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates voluptas",
+      "accNumber": "800038375442",
+      "availableBalance": "29,329.72",
+      "currentBalance": "25,3i3.42",
+      "totalHolds": "2398.92",
+      "currency": "LKR",
+      "transactions": [
+        {
+          "id": 1,
+          "accType": "Current",
+          "date": "12/07/2023",
+          "description": "Virtusa salary credit - T443545",
+          "beneficiaryAccNumner": "",
+          "type": "credit",
+          "amount": "36000.00",
+          "status": "Success"
+        },
+        {
+          "id": 2,
+          "accType": "Current",
+          "date": "18/07/2023",
+          "description": "Fund transfer",
+          "beneficiaryAccNumner": "800038375442",
+          "type": "debit",
+          "amount": "13000.00",
+          "status": "Success"
+        },
+        {
+          "id": 3,
+          "accType": "Current",
+          "date": "20/07/2023",
+          "description": "Fund transfer",
+          "beneficiaryAccNumner": "98747247463",
+          "type": "debit",
+          "amount": "29000.00",
+          "status": "Success"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "accType": "Savings",
+      "accDesc": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates voluptas",
+      "accNumber": "2173383754424",
+      "availableBalance": "16,380.00",
+      "currentBalance": "16,380.00",
+      "totalHolds": "0.00",
+      "currency": "LKR",
+      "transactions": [
+        {
+          "id": 1,
+          "accType": "Savings",
+          "date": "12/07/2023",
+          "description": "Virtusa salary credit - T443545",
+          "type": "credit",
+          "amount": "62000.00"
+        },
+        {
+          "id": 2,
+          "accType": "Savings",
+          "date": "18/07/2023",
+          "description": "Fund transfer",
+          "beneficiaryAccNumner": "800038375442",
+          "type": "debit",
+          "amount": "28000.00"
+        },
+        {
+          "id": 3,
+          "accType": "Savings",
+          "date": "20/07/2023",
+          "description": "Fund transfer",
+          "beneficiaryAccNumner": "98747247463",
+          "type": "debit",
+          "amount": "15000.00"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "accType": "Fixed",
+      "period": "12",
+      "accDesc": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates voluptas",
+      "accNumber": "800038375442",
+      "availableBalance": "400,000.72",
+      "currency": "LKR",
+      "transactions": [
+        {
+          "id": 1,
+          "accType": "Fixed",
+          "date": "12/07/2023",
+          "description": "Deposit",
+          "type": "credit",
+          "amount": "400000.00"
+        },
+        {
+          "id": 2,
+          "accType": "Fixed",
+          "date": "18/07/2023",
+          "description": "Return on investment",
+          "type": "credit",
+          "amount": "3100.00"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "accType": "Recurring",
+      "accDesc": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates voluptas",
+      "accNumber": "800038375442",
+      "availableBalance": "148,329.72",
+      "currency": "LKR",
+      "transactions": [
+        {
+          "id": 1,
+          "accType": "Recurring",
+          "date": "12/07/2023",
+          "description": "Deposit",
+          "type": "credit",
+          "amount": "50000.00"
+        },
+        {
+          "id": 2,
+          "accType": "Recurring",
+          "date": "18/07/2023",
+          "description": "Return on investment",
+          "type": "credit",
+          "amount": "1000.00"
+        }
+      ]
+    }
+  ],
+  "transactions": [
+    {
+      "id": 1,
+      "accType": "Current",
+      "date": "12/07/2023",
+      "description": "Virtusa salary credit - T443545",
+      "beneficiaryAccNumner": "",
+      "type": "credit",
+      "amount": "36000.00",
+      "status": "Success"
+    },
+    {
+      "id": 2,
+      "accType": "Current",
+      "date": "18/07/2023",
+      "description": "Fund transfer",
+      "beneficiaryAccNumner": "800038375442",
+      "type": "debit",
+      "amount": "13000.00",
+      "status": "Success"
+    },
+    {
+      "id": 3,
+      "accType": "Current",
+      "date": "20/07/2023",
+      "description": "Fund transfer",
+      "beneficiaryAccNumner": "98747247463",
+      "type": "debit",
+      "amount": "29000.00",
+      "status": "Success"
+    },
+    {
+      "id": 4,
+      "accType": "Savings",
+      "date": "12/07/2023",
+      "description": "Virtusa salary credit - T443545",
+      "type": "credit",
+      "amount": "62000.00"
+    },
+    {
+      "id": 5,
+      "accType": "Savings",
+      "date": "18/07/2023",
+      "description": "Fund transfer",
+      "beneficiaryAccNumner": "800038375442",
+      "type": "debit",
+      "amount": "28000.00"
+    },
+    {
+      "id": 6,
+      "accType": "Savings",
+      "date": "20/07/2023",
+      "description": "Fund transfer",
+      "beneficiaryAccNumner": "98747247463",
+      "type": "debit",
+      "amount": "15000.00"
+    },
+    {
+      "id": 7,
+      "accType": "Fixed",
+      "date": "12/07/2023",
+      "description": "Deposit",
+      "type": "credit",
+      "amount": "400000.00"
+    },
+    {
+      "id": 8,
+      "accType": "Fixed",
+      "date": "18/07/2023",
+      "description": "Return on investment",
+      "type": "credit",
+      "amount": "3100.00"
+    },
+    {
+      "id": 9,
+      "accType": "Recurring",
+      "date": "12/07/2023",
+      "description": "Deposit",
+      "type": "credit",
+      "amount": "50000.00"
+    },
+    {
+      "id": 10,
+      "accType": "Recurring",
+      "date": "18/07/2023",
+      "description": "Return on investment",
+      "type": "credit",
+      "amount": "1000.00"
+    }
+  ],
+  "beneficiaries": [
+    {
+      "id": 1,
+      "name": "Anne Hathaway",
+      "accNumber": "800038375442",
+      "addedOn": "01/07/2023",
+      "status": "true"
+    },
+    {
+      "id": 2,
+      "name": "Samuel Radgers",
+      "accNumber": "98747247463",
+      "addedOn": "05/07/2023",
+      "status": "true"
+    },
+    {
+      "id": 3,
+      "name": "Peter Bernard",
+      "accNumber": "2122094863",
+      "addedOn": "10/07/2023",
+      "status": "true"
+    }
+  ]
+}
