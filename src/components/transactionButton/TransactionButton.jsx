@@ -1,8 +1,9 @@
 import { AccountBalanceWalletOutlined } from "@mui/icons-material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 
-const TransactionButton = ({ accType }) => {
+const TransactionButton = ({ accType, accNumber }) => {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
@@ -10,6 +11,7 @@ const TransactionButton = ({ accType }) => {
       navigate("/current-transactions");
     } else if (accType === "Savings") {
       navigate("/savings-transactions");
+      return accNumber;
     } else if (accType === "Fixed") {
       navigate("/fixed-transactions");
     } else {
@@ -25,8 +27,8 @@ const TransactionButton = ({ accType }) => {
 };
 
 export default TransactionButton;
-// navigate={
-//   account.accType === "Current"
-//     ? navigate("/current-transactions")
-//     : navigate("/current-savings")
-// }
+
+TransactionButton.propTypes = {
+  accType: PropTypes.string,
+  accNumber: PropTypes.string,
+};

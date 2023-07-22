@@ -1,9 +1,8 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
-import Alert from "./components/alert/Alert";
 import CreateSavingsAccount from "./pages/savingsAccount/CreateSavingsAccount";
 import CreateCurrentAccount from "./pages/currentAccount/CreateCurrentAccount";
 import CreateFixedAccount from "./pages/fixedAccount/CreateFixedAccount";
@@ -14,17 +13,19 @@ import CurrentTransfer from "./pages/currentAccount/CurrentTransfer";
 import SavingsTransfer from "./pages/savingsAccount/SavingsTransfer";
 import FixedTransactions from "./pages/fixedAccount/FixedTransactions";
 import RecurringTransactions from "./pages/recurringAccount/RecurringTransactions";
+import SavingsTransactionSummary from "./pages/savingsAccount/SavingsTransactionSummary";
+import CurrentTransactionSummary from "./pages/currentAccount/CurrentTransactionSummary";
+import Beneficiaries from "./pages/beneficiaries/Beneficiaries";
+import CreateBeneficiary from "./pages/beneficiaries/CreateBeneficiary";
 
 function App() {
   return (
     <div className="app">
-      {/* <Alert /> */}
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route index path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
-          {/* CREATE ROUTES */}
           <Route path="/create-savings" element={<CreateSavingsAccount />} />
           <Route path="/create-current" element={<CreateCurrentAccount />} />
           <Route path="/create-fixed" element={<CreateFixedAccount />} />
@@ -32,7 +33,6 @@ function App() {
             path="/create-recurring"
             element={<CreateRecurringAccount />}
           />
-          {/* TRANSACTIONS ROUTES */}
           <Route
             path="/current-transactions"
             element={<CurrentTransactions />}
@@ -41,18 +41,28 @@ function App() {
             path="/savings-transactions"
             element={<SavingsTransactions />}
           />
-          <Route path="/fixed-transactions" element={<FixedTransactions />} />{" "}
+          <Route path="/fixed-transactions" element={<FixedTransactions />} />
           <Route
             path="/recurring-transactions"
             element={<RecurringTransactions />}
           />
-          {/* TRANSFER ROUTES */}
           <Route path="/current-transfer" element={<CurrentTransfer />} />
           <Route path="/savings-transfer" element={<SavingsTransfer />} />
+          <Route
+            path="/current-transaction-summary"
+            element={<CurrentTransactionSummary />}
+          />
+          <Route
+            path="/savings-transaction-summary"
+            element={<SavingsTransactionSummary />}
+          />
+          <Route path="/beneficiaries" element={<Beneficiaries />} />
+          <Route
+            path="/beneficiaries/create-beneficiary"
+            element={<CreateBeneficiary />}
+          />
         </Routes>
       </BrowserRouter>
-      {/* <Login />
-      <Home /> */}
     </div>
   );
 }

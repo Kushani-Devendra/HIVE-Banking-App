@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 
-const TransactionTable = ({}) => {
-  const [transactions, setTransactions] = useState(null);
+const TransactionTable = ({ accountType }) => {
+  const [transactions, setTransactions] = useState([]);
 
   useEffect(() => {
     fetch("http://localhost:3001/transactions")
@@ -15,32 +16,35 @@ const TransactionTable = ({}) => {
 
   return (
     <>
-      <table className="mt-1">
+      <table className="mt-2">
         <thead>
-          <th>Sr. No.</th>
-          <th>Date</th>
-          <th>Transaction</th>
-          <th>Type</th>
-          <th>Amount</th>
+          <tr>
+            <th>Sr. No.</th>
+            <th>Date</th>
+            <th>Transaction</th>
+            <th>Type</th>
+            <th>Amount</th>
+          </tr>
         </thead>
         <tbody>
           {transactions &&
-            transactions.map(
-              (transaction) => (
-                // transactions.accType === "Savings" && (
-                <tr key={transaction.id}>
-                  <td>{transaction.id}</td>
-                  <td>{transaction.date}</td>
-                  <td>
-                    {transaction.description}
-                    {transaction.beneficiaryAccNumner}
-                  </td>
-                  <td>{transaction.type}</td>
-                  <td>{transaction.amount}</td>
-                </tr>
-              )
-              // )
-            )}
+            transactions
+              .filter((transaction) => transaction.accType === accountType)
+              .map(
+                (transaction) => (
+                  <tr key={transaction.id}>
+                    <td>{transaction.id}</td>
+                    <td>{transaction.date}</td>
+                    <td>
+                      {transaction.description} &nbsp;
+                      {transaction.beneficiaryDetails}
+                    </td>
+                    <td>{transaction.type}</td>
+                    <td>{transaction.amount}</td>
+                  </tr>
+                )
+                // )
+              )}
         </tbody>
       </table>
     </>
@@ -48,3 +52,7 @@ const TransactionTable = ({}) => {
 };
 
 export default TransactionTable;
+
+TransactionTable.propTypes = {
+  accType: PropTypes.string,
+};

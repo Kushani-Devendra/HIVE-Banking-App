@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Alert from "../../components/alert/Alert";
 import TextBox from "../../components/textBox/TextBox";
 import PrimaryButton from "../../components/primaryButton/PrimaryButton";
+import SelectPeriod from "../../components/select/SelectPeriod";
 
 const CreateRecurringAccount = () => {
   const accountNumber = Math.floor(
@@ -11,31 +12,22 @@ const CreateRecurringAccount = () => {
   ).toString();
 
   const [id, setId] = useState("");
-  const [accType, setAccType] = useState("Savings");
-  const [accDesc, setAccDesc] = useState(
-    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates voluptas"
-  );
-  const [accNumber, setAccNumber] = useState(accountNumber);
+  const [period, setPeriod] = useState("");
   const [availableBalance, setAvailableBalance] = useState("");
-  const [currency, setCurrency] = useState("LKR");
 
   const [showAlert, setShowAlert] = useState(false);
 
   const navigate = useNavigate();
 
-  const handleCLoseAlert = () => {
-    setShowAlert(false);
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     let accountDetails = {
       id,
-      accType,
-      accDesc,
-      accNumber,
+      accType: "Recurring",
+      period,
+      accNumber: accountNumber,
       availableBalance,
-      currency,
+      currency: "LKR",
     };
     fetch("http://localhost:3001/accounts", {
       method: "POST",
@@ -44,10 +36,10 @@ const CreateRecurringAccount = () => {
     })
       .then((res) => {
         setShowAlert(true);
-        console.log("Recurring account opened successfilly");
-        setInterval(() => {
+        setTimeout(() => {
+          setShowAlert(false);
           navigate("/");
-        }, 5000);
+        }, 3000);
       })
 
       .catch((err) => {
@@ -63,23 +55,44 @@ const CreateRecurringAccount = () => {
           <Alert
             bgColor="alert-bg-light-green"
             textColor="alert-text-dark-green"
-            message="Savings account opened successfilly"
-            showAlert={showAlert}
-            handleCLoseAlert={handleCLoseAlert}
+            message="Recurring account opened successfully"
+            redirectMsg="Redirecting to home page..."
           />
         )}
 
-        <h2>Create Savings Account</h2>
+        <h2>Create Recurring Account</h2>
         <div className="create-account-card">
-          <div>
-            <p className="fs-15">
-              To open a Savings Account, please enter the details in the form.
+          <div className="fs-15">
+            <p>
+              To open a Recurring Account, please enter the details in the form.
               Then click "Open Account".
             </p>
+
+            <div className="mt-1">
+              <p>
+                <strong>Note: </strong>Please ensure the details are correct.
+                Interst will be applied as below.
+              </p>
+
+              <ul className="mt-1 ml-1">
+                <li>Period: 3 months | Interest - 2%</li>
+                <li>Period: 6 months | Interest - 6%</li>
+                <li>Period: 9 months | Interest - 8%</li>
+              </ul>
+            </div>
           </div>
 
-          <form onSubmit={handleSubmit}>
-            <div className="flex-column">
+          <form className="mt-2" onSubmit={handleSubmit}>
+            <div className="flex-column gap--5">
+              <div>
+                <SelectPeriod
+                  id="period"
+                  label="Select Period *"
+                  setPeriod={(e) => {
+                    setPeriod(e.target.value);
+                  }}
+                />
+              </div>
               <div>
                 <TextBox
                   type="number"
@@ -88,7 +101,6 @@ const CreateRecurringAccount = () => {
                   onChange={(e) => {
                     setAvailableBalance(e.target.value);
                   }}
-                  required
                   min="5000"
                 />
               </div>

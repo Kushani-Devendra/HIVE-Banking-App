@@ -15,6 +15,13 @@ const AccountCards = () => {
       });
   }, []);
 
+  const renderAccountNumber = (accNumber) => {
+    const lastFourDigits = accNumber.slice(-4);
+    const asterisks = "*".repeat(accNumber.length - 4);
+    const formattedAccountNumber = `${asterisks}${lastFourDigits}`;
+    return formattedAccountNumber;
+  };
+
   return (
     <Fragment>
       {accounts &&
@@ -26,19 +33,17 @@ const AccountCards = () => {
               <div className="account-card-header">
                 {account && (
                   <>
-                    <div className="flex-between">
+                    <div className="flex-between gap-6">
                       <h4 className="account-card-number">
-                        {account.accNumber}
+                        {renderAccountNumber(account.accNumber)}
                       </h4>
-                      <div className="account-icon-set flex-between">
-                        <TransactionButton accType={account.accType} />
-                        {account.accType === "Current" ||
-                        account.accType === "Savings" ? (
-                          <TransferButton accType={account.accType} />
-                        ) : (
-                          ""
-                        )}
-                      </div>
+
+                      {account.accType === "Current" ||
+                      account.accType === "Savings" ? (
+                        <TransferButton accType={account.accType} />
+                      ) : (
+                        ""
+                      )}
                     </div>
                     <div className="account-card-content">
                       <div className="">

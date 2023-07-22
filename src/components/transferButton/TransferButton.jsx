@@ -1,6 +1,7 @@
 import { CurrencyExchangeOutlined } from "@mui/icons-material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const TransferButton = ({ accType }) => {
   const navigate = useNavigate();
@@ -18,3 +19,7 @@ const TransferButton = ({ accType }) => {
 };
 
 export default TransferButton;
+
+TransferButton.propTypes = {
+  accType: PropTypes.string,
+};

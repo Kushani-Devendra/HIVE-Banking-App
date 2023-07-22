@@ -9,7 +9,7 @@ const CurrentTransactions = () => {
       <Navbar />
       <div className="main-container">
         <Title title="Current Account Transactions" />
-        <TransactionTable />
+        <TransactionTable accountType="Current" />
       </div>
     </>
   );

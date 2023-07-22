@@ -4,6 +4,7 @@ import PrimaryButton from "../../components/primaryButton/PrimaryButton";
 import TextBox from "../../components/textBox/TextBox";
 import { useNavigate } from "react-router-dom";
 import Alert from "../../components/alert/Alert";
+import Title from "../../components/title/Title";
 
 const CreateSavingsAccount = () => {
   const accountNumber = Math.floor(
@@ -11,35 +12,22 @@ const CreateSavingsAccount = () => {
   ).toString();
 
   const [id, setId] = useState("");
-  const [accType, setAccType] = useState("Savings");
-  const [accDesc, setAccDesc] = useState(
-    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates voluptas"
-  );
-  const [accNumber, setAccNumber] = useState(accountNumber);
   const [availableBalance, setAvailableBalance] = useState("");
-  const [currentBalance, setCurrentBalance] = useState("00.00");
-  const [totalHolds, setTotalHolds] = useState("00.00");
-  const [currency, setCurrency] = useState("LKR");
 
   const [showAlert, setShowAlert] = useState(false);
 
   const navigate = useNavigate();
 
-  const handleCLoseAlert = () => {
-    setShowAlert(false);
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     let accountDetails = {
       id,
-      accType,
-      accDesc,
-      accNumber,
+      accType: "Savings",
+      accNumber: accountNumber,
       availableBalance,
-      currentBalance,
-      totalHolds,
-      currency,
+      currentBalance: availableBalance,
+      totalHolds: "00.00",
+      currency: "LKR",
     };
     fetch("http://localhost:3001/accounts", {
       method: "POST",
@@ -47,11 +35,13 @@ const CreateSavingsAccount = () => {
       body: JSON.stringify(accountDetails),
     })
       .then((res) => {
+        // console.log("Savings account opened successfully");
+
         setShowAlert(true);
-        console.log("Savings account opened successfilly");
-        setInterval(() => {
+        setTimeout(() => {
+          setShowAlert(false);
           navigate("/");
-        }, 5000);
+        }, 3000);
       })
 
       .catch((err) => {
@@ -67,13 +57,12 @@ const CreateSavingsAccount = () => {
           <Alert
             bgColor="alert-bg-light-green"
             textColor="alert-text-dark-green"
-            message="Savings account opened successfilly"
-            showAlert={showAlert}
-            handleCLoseAlert={handleCLoseAlert}
+            message="Savings account opened successfully"
+            redirectMsg="Redirecting to home page..."
           />
         )}
 
-        <h2>Create Savings Account</h2>
+        <Title title="Create Savings Account" />
         <div className="create-account-card">
           <div>
             <p className="fs-15">
@@ -82,7 +71,7 @@ const CreateSavingsAccount = () => {
             </p>
           </div>
 
-          <form onSubmit={handleSubmit}>
+          <form className="mt-2" onSubmit={handleSubmit}>
             <div className="flex-column">
               <div>
                 <TextBox

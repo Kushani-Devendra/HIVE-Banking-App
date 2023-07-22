@@ -1,27 +1,45 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import PrimaryButton from "../../components/primaryButton/PrimaryButton";
+import TextBox from "../../components/textBox/TextBox";
+import Alert from "../../components/alert/Alert";
 
 const Login = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    sessionStorage.clear();
+  }, []);
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
+  const [showAlert, setShowAlert] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch(`http://localhost:3001/users?username=${username}`)
+
+    fetch(`http://localhost:3001/users/${username}`)
       .then((res) => {
+        console.log(res.id);
+
         return res.json();
       })
       .then((resp) => {
         console.log(resp);
         if (Object.keys(resp).length === 0) {
-          console.log("Username is invalid");
+          setShowAlert(true);
+          setTimeout(() => {
+            setShowAlert(false);
+          }, 3000);
         } else {
           if (resp.password === password) {
+            sessionStorage.setItem("username", username);
             navigate("/");
           } else {
-            console.log("Invalid credentials");
+            setShowAlert(true);
+            setTimeout(() => {
+              setShowAlert(false);
+            }, 3000);
           }
         }
       })
@@ -32,23 +50,19 @@ const Login = () => {
 
   return (
     <div className="container">
+      {showAlert && (
+        <Alert
+          bgColor="alert-bg-light-red"
+          textColor="alert-text-dark-red"
+          message="Invalid username or password."
+        />
+      )}
       <form className="card" onSubmit={handleSubmit}>
         <h2 className="card-header">Sign In</h2>
         <div className="card-body">
-          {/* <div className="input-container">
-              <input
-                className="input-box"
-                value={id}
-                onChange={(e) => {
-                  setId(uid);
-                }}
-                hidden
-              />
-            </div> */}
           <div className="input-container">
-            <label className="input-label">Username *</label>
-            <input
-              className="input-box"
+            <TextBox
+              label="Username *"
               value={username}
               onChange={(e) => {
                 setUsername(e.target.value);
@@ -57,10 +71,9 @@ const Login = () => {
             />
           </div>
           <div className="input-container">
-            <label className="input-label">Password *</label>
-            <input
+            <TextBox
               type="password"
-              className="input-box"
+              label="Password *"
               value={password}
               onChange={(e) => {
                 setPassword(e.target.value);
@@ -70,7 +83,12 @@ const Login = () => {
           </div>
         </div>
         <div className="card-footer">
-          <PrimaryButton type="submit">Login</PrimaryButton>
+          <PrimaryButton
+            type="submit"
+            // onClick={handleLogin}
+          >
+            Login
+          </PrimaryButton>
           <p className="mt-1 link-sm">
             Don't have an account? <Link to={"/register"}>Register here</Link>
           </p>

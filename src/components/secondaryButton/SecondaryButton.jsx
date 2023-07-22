@@ -1,11 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
-const SecondaryButton = ({ children, navigate, className, ...props }) => {
+const SecondaryButton = ({ children, onClick, className, ...props }) => {
   return (
     <button
       className={`btn-primary-outlined ${className}`}
-      onClick={navigate}
+      onClick={onClick}
       {...props}
     >
       {children}
@@ -14,3 +14,8 @@ const SecondaryButton = ({ children, navigate, className, ...props }) => {
 };
 
 export default SecondaryButton;
+
+SecondaryButton.propTypes = {
+  className: PropTypes.string,
+  onClick: PropTypes.func,
+};
