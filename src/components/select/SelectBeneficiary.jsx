@@ -21,11 +21,10 @@ const SelectBeneficiary = ({
       <select
         className={`input-box ${className}`}
         onChange={setBeneficiary}
-        defaultValue={"default"}
-        required={true}
+        required
         {...props}
       >
-        <option value="" disabled>
+        <option value="" readonly>
           Select Beneficiary
         </option>
 

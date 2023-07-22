@@ -8,11 +8,10 @@ const SelectPeriod = ({ label, className, setPeriod, ...props }) => {
       <select
         className={`input-box ${className}`}
         onChange={setPeriod}
-        defaultValue={"default"}
         required
         {...props}
       >
-        <option value="default" disabled>
+        <option value="" readonly>
           Select Period
         </option>
         <option value="3">3</option>

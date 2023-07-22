@@ -41,38 +41,6 @@
       "accNumber": "273665392771",
       "availableBalance": "148,329.72",
       "currency": "LKR"
-    },
-    {
-      "id": 5,
-      "accType": "Fixed",
-      "period": "",
-      "accNumber": "443464567243",
-      "availableBalance": "66666666",
-      "currency": "LKR"
-    },
-    {
-      "id": 6,
-      "accType": "Fixed",
-      "period": "",
-      "accNumber": "688188219305",
-      "availableBalance": "7777777",
-      "currency": "LKR"
-    },
-    {
-      "id": 7,
-      "accType": "Fixed",
-      "period": "",
-      "accNumber": "893973634269",
-      "availableBalance": "33333",
-      "currency": "LKR"
-    },
-    {
-      "id": 8,
-      "accType": "Fixed",
-      "period": "",
-      "accNumber": "739602141553",
-      "availableBalance": "333333",
-      "currency": "LKR"
     }
   ],
   "transactions": [
@@ -166,46 +134,6 @@
       "description": "Return on investment",
       "type": "credit",
       "amount": "1000.00"
-    },
-    {
-      "id": 11,
-      "accType": "Current",
-      "date": "7/22/2023",
-      "description": "Fund transfer",
-      "beneficiaryDetails": "",
-      "type": "debit",
-      "amount": "",
-      "status": "Success"
-    },
-    {
-      "id": 12,
-      "accType": "Current",
-      "date": "7/22/2023",
-      "description": "Fund transfer",
-      "beneficiaryDetails": "",
-      "type": "debit",
-      "amount": "",
-      "status": "Success"
-    },
-    {
-      "id": 13,
-      "accType": "Current",
-      "date": "7/22/2023",
-      "description": "Fund transfer",
-      "beneficiaryDetails": "",
-      "type": "debit",
-      "amount": "",
-      "status": "Success"
-    },
-    {
-      "id": 14,
-      "accType": "Current",
-      "date": "7/22/2023",
-      "description": "Fund transfer",
-      "beneficiaryDetails": "",
-      "type": "debit",
-      "amount": "20000",
-      "status": "Success"
     }
   ],
   "beneficiaries": [

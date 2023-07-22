@@ -96,7 +96,8 @@ const CreateBeneficiary = () => {
                     setAccNumber(e.target.value);
                   }}
                   required
-                  minLength={12}
+                  min="100000000000"
+                  max="999999999999"
                 />
               </div>
             </div>
